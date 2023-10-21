@@ -4,4 +4,5 @@ function cetakNama(nama) {
 
 const PI = 3.14;
 
-module.export = cetakNama;
+module.exports.cetakNama = cetakNama;
+module.exports.PI = PI;
