@@ -4,6 +4,7 @@
   "description": "Contact App",
   "main": "app.js",
   "dependencies": {
+    "validator": "^13.11.0",
     "yargs": "^17.7.2"
   },
   "devDependencies": {},

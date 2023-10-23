@@ -1,10 +1,5 @@
 const fs = require("fs");
-const readline = require("readline");
-
-const rl = readline.createInterface({
-  input: process.stdin,
-  output: process.stdout,
-});
+const validator = require("validator");
 
 const dirPath = "./data";
 
@@ -43,12 +38,25 @@ const saveContact = (nama, phone) => {
   const fileBuffer = fs.readFileSync("data/contacts.json", "utf8");
   const contacts = JSON.parse(fileBuffer);
 
+  // cek duplikat
+  const duplikat = contacts.find((contact) => contact.nama === nama);
+  if (duplikat) {
+    console.log("Contact sudah terdaftar, gunakan nama lain!");
+    return false;
+  }
+
+  // validator phone
+  if (phone) {
+    if (!validator.isMobilePhone(phone, "id-ID")) {
+      console.log("Nomor HP tidak valid!");
+      return false;
+    }
+  }
+
   contacts.push(contact);
 
   fs.writeFileSync("data/contacts.json", JSON.stringify(contacts));
   console.log("Contact saved successfully");
-
-  rl.close();
 };
 
 module.exports = { pertanyaan, answer, saveContact };

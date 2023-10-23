@@ -1,1 +1,4 @@
-[{"nama":"Rangga","phone":"087123"}]
+[
+  { "nama": "Rangga", "phone": "087123" },
+  { "nama": "Faza", "phone": "089526356420" }
+]
